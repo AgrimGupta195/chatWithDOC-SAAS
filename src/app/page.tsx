@@ -8,16 +8,26 @@ export default async function Home() {
   const { userId } = await auth();
   const isAuth = !!userId;
   return (
-    <div className="w-screen min-h-screen bg-gradient-to-r from-rose-100 to-teal-100 flex items-center justify-center" >
+    <div className="w-screen min-h-screen bg-gradient-to-r from-rose-100 to-teal-100 flex items-center justify-center p-1" >
+      <div className="absolute top-4 right-4">
+        <UserButton
+          appearance={{
+            elements: {
+              userButtonAvatarBox: "w-10 h-10",
+              userButtonAvatarImage: "w-10 h-10 rounded-full",
+            },
+          }}
+        />
+      </div>
       <div className="top-0.5 left-0.5 ">
         <div className="flex flex-col items-center text-center">
           <div className="flex items-center">
             <h1 className="mr-3 text-5xl font-semibold ">
               Chat with any PDF
             </h1>
-            <UserButton afterSignOutUrl="/"/>
+            
           </div>
-          <div className="flex mt-2 flex-col">
+          <div className="flex mt-4 flex-col ">
             {isAuth && <Button>
               Go to Chats
             </Button>}
