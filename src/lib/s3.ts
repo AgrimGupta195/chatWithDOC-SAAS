@@ -5,8 +5,10 @@ export async function uploadToS3(
 ): Promise<{ file_key: string; file_name: string }> {
   return new Promise((resolve, reject) => {
     try {
+      console.log(process.env.NEXT_PUBLIC_S3_ACCESS_KEY_ID, process.env.NEXT_PUBLIC_S3_SECRET_ACCESS_KEY, process.env.NEXT_PUBLIC_S3_BUCKET_NAME);
+      
       const s3 = new S3({
-        region: "ap-southeast-1",
+        region: "us-east-2",
         credentials: {
           accessKeyId: process.env.NEXT_PUBLIC_S3_ACCESS_KEY_ID!,
           secretAccessKey: process.env.NEXT_PUBLIC_S3_SECRET_ACCESS_KEY!,
